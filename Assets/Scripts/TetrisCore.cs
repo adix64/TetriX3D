@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using AppEvent;
 class TetrisCore
 {
     const int maxPiecePadding = 4;
@@ -22,6 +23,7 @@ class TetrisCore
         CurrPiece = new TetrisPiece();
         NextPiece = new TetrisPiece();
         ClearBoard();
+        EventSystem<TetrisControlEvent>.Subscribe(TetrisControlEvent.Restart, ClearBoard);
     }
     private void ClearBoard()
     {
@@ -40,7 +42,11 @@ class TetrisCore
         if (!ValidBoard(PiecePos))
         {
             PiecePos += Vector2Int.up;
-            BakePieceOnBoard();
+            if (!BakePieceOnBoard())
+            {
+                EventSystem<TetrisGameEvent>.TriggerEvent(TetrisGameEvent.GameOver);
+                return;
+            }
             ClearRows();
             GeneratePiece();
         }
@@ -87,6 +93,8 @@ class TetrisCore
         CurrPiece.Reset(templatePieces[nextPieceTemplateIndex]);
         nextPieceTemplateIndex = Random.Range(0, templatePieces.Length);
         NextPiece.Reset(templatePieces[nextPieceTemplateIndex]);
+        EventSystem<TetrisGameEvent, TemplatePiece>.TriggerEvent(TetrisGameEvent.NextPiece,
+                        templatePieces[nextPieceTemplateIndex]);
         PiecePos = new Vector2Int(5, 20);
         ComputeProjection();
     }
@@ -103,21 +111,26 @@ class TetrisCore
                 }
         return true;
     }
-    private void BakePieceOnBoard()
+    private bool BakePieceOnBoard()
     {
+        EventSystem<TetrisGameEvent>.TriggerEvent(TetrisGameEvent.BakePiece);
         for (int y = 0; y < CurrPiece.bulkSize; y++)
             for (int x = 0; x < CurrPiece.bulkSize; x++)
                 if (CurrPiece.shape[x, y])
                 {
                     var cellPos = PiecePos + new Vector2Int(x, y);
+                    if (cellPos.y >= TetrisHeight)
+                        return false;
                     TetrisBoard[cellPos.x, cellPos.y] = true;
                     ColourBoard[cellPos.x, cellPos.y] = CurrPiece.color;
                 }
+        return true;
     }
     private void ClearRows()
     {
-        var pY = Mathf.Max(0, PiecePos.y);
-        for (int row = pY; row < pY + CurrPiece.bulkSize; row++)
+        var startRow = Mathf.Min(Mathf.Max(0, PiecePos.y),     TetrisHeight - 1);
+        var endRow = Mathf.Min(startRow + CurrPiece.bulkSize,  TetrisHeight - 1);
+        for (int row = startRow; row < endRow; row++)
             while (IsRowFull(row))
                 ClearRow(row);
     }
