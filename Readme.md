@@ -1,6 +1,6 @@
 # Welcome to **TetriX3D**!
 <p>
-<img src="https://raw.githubusercontent.com/adix64/TetriX3D/master/tetris.gif" alt="gif" width="360" align="left"/>
+<img src="https://raw.githubusercontent.com/adix64/TetriX3D/master/tetris.gif" alt="gif" width="200" />
 </p>  
 This application uses a Model-View-Controller design.<br/><br/>
 The Model component is implemented as a non-MonoBehavior class in TetrisCore.cs . This contains all game logic and makes use of the TetrisPiece(.cs) class which implements basic CW and CCW rotation functions. No additional space is needed for the rotations, which are done in-place by cycling through matrix borders. See this in TetrisPiece.cs . <br/><br/>
