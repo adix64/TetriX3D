@@ -52,7 +52,7 @@ public partial class TetrisGame : MonoBehaviour
         if (timeSinceLastMove > timeThresholdDirBtn)
         {
             if (timeThresholdDirBtn > 0.1f)
-                timeThresholdDirBtn *= 0.5f;
+                timeThresholdDirBtn *= 0.25f;
             moveAction();
         }
         timeSinceLastMove += Time.deltaTime;
