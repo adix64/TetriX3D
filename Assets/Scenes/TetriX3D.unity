@@ -1467,6 +1467,7 @@ GameObject:
   - component: {fileID: 700371592}
   - component: {fileID: 700371591}
   - component: {fileID: 700371590}
+  - component: {fileID: 700371593}
   m_Layer: 5
   m_Name: LeftBTN
   m_TagString: Untagged
@@ -1535,18 +1536,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 700371591}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1357192457}
-        m_MethodName: MoveLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &700371591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,6 +1574,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700371588}
   m_CullTransparentMesh: 0
+--- !u!114 &700371593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700371588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4346bed0f87b9604cb239939ed2d0b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonInfo:
+    timePressed: 0
+    buttonPressed: 0
+    buttonAction: 0
 --- !u!1 &744304894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,6 +2114,7 @@ GameObject:
   - component: {fileID: 1176982033}
   - component: {fileID: 1176982032}
   - component: {fileID: 1176982031}
+  - component: {fileID: 1176982034}
   m_Layer: 5
   m_Name: RightBTN
   m_TagString: Untagged
@@ -2176,18 +2183,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1176982032}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1357192457}
-        m_MethodName: MoveRight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1176982032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,6 +2221,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176982029}
   m_CullTransparentMesh: 0
+--- !u!114 &1176982034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176982029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4346bed0f87b9604cb239939ed2d0b34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonInfo:
+    timePressed: 0
+    buttonPressed: 0
+    buttonAction: 1
 --- !u!1 &1181984442
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,8 +2804,19 @@ MonoBehaviour:
   cellBlockPrefab: {fileID: 7709356504863002226, guid: dc139233e67cf324280640977496c0bb,
     type: 3}
   templatePrefabs:
-  - {fileID: 6431294478166888640, guid: 83e70526e908be84883d06e6550ca52c, type: 3}
-  dropPieceButton: {fileID: 1501902925}
+  - {fileID: 2083962201186327790, guid: e82e3d0a661bedc44a4b1d44d2d5ed64, type: 3}
+  - {fileID: 6431294478166888640, guid: 4447e890f2e92eb49bf8a036db747077, type: 3}
+  - {fileID: 4195622819276270108, guid: 171ab663ebe50fc47b9d643d9249de0b, type: 3}
+  - {fileID: 4210873982955915397, guid: 3385788d911c063428fbf2043d831db5, type: 3}
+  - {fileID: 8196782157013658208, guid: 7edb24ae180d0c64bab31f0f84e4bd59, type: 3}
+  - {fileID: 1612426193036033906, guid: 334d083df1e16ed49af4b6bd05e5f535, type: 3}
+  - {fileID: 4286890132771765907, guid: 3e7accb98c72ea044b65cc7fd6a44ffc, type: 3}
+  - {fileID: 2096058749527222257, guid: 88547c2d957e46248ab8fdf620fe207d, type: 3}
+  - {fileID: 3045198159864051693, guid: 0508a0029ebd72e4c9e320b5d8b0d046, type: 3}
+  - {fileID: 1371590099633267734, guid: c6c106557f7b5044483fd845a283c19f, type: 3}
+  - {fileID: 5082141779356902458, guid: c0bc977f45287844ba1d4b868e8dae47, type: 3}
+  - {fileID: 6204147864538045147, guid: 911c42192e6ce2f4ea9fbbed7d74af7d, type: 3}
+  - {fileID: 4056296746228101473, guid: d6291730cfa51174fa68fea450162f2b, type: 3}
 --- !u!4 &1357192458
 Transform:
   m_ObjectHideFlags: 0
@@ -2950,8 +2973,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4346bed0f87b9604cb239939ed2d0b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPressed: 0
-  timePressed: 0
+  buttonInfo:
+    timePressed: 0
+    buttonPressed: 0
+    buttonAction: 2
 --- !u!1 &1507768885
 GameObject:
   m_ObjectHideFlags: 0

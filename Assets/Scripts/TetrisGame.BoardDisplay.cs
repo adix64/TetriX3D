@@ -2,6 +2,19 @@
 
 public partial class TetrisGame : MonoBehaviour
 {
+    private void InitializeBoard()
+    {
+        cellTransforms = new Transform[TetrisWidth, TetrisHeight];
+        cells = new MeshRenderer[TetrisWidth, TetrisHeight];
+        for (int y = 0; y < TetrisHeight; y++)
+            for (int x = 0; x < TetrisWidth; x++)
+            {
+                cellTransforms[x, y] = Instantiate(cellBlockPrefab, new Vector3(x, y, 0),
+                                        Quaternion.identity, transform).transform;
+                cells[x, y] = cellTransforms[x, y].GetComponent<MeshRenderer>();
+                cells[x, y].material = new Material(cells[x, y].material);
+            }
+    }
     private void BoardDisplayStepUpdate()
     {
         BoardDisplayClearCells();

@@ -6,6 +6,10 @@
     }
     public enum TetrisControlEvent
     {
-        MoveLeft, MoveRight, Drop, Rotate, Pause, Resume, Restart
+        ButtonDown, ButtonUp, ButtonPressed, Pause, Resume, Restart
+    }
+    public enum TetrisButtonAction
+    {
+        MoveLeft, MoveRight, Drop, Rotate
     }
 }

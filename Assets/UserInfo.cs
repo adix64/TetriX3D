@@ -6,9 +6,8 @@ public class UserInfo : MonoBehaviour
     int bestScore = 0;
     float gamePace = 1f;
     TMPro.TMP_Text[] uiText;
-
-    private int decimatedScore = 0;
     // uiText[0]==SCORE uiText[1]==BEST uiText[2]==SPEED
+    private int decimatedScore = 0;
     void Start()
     {
         uiText = GetComponentsInChildren<TMPro.TMP_Text>();
