@@ -136,6 +136,7 @@ class TetrisCore
     }
     private void ClearRow(int row)
     {
+        EventSystem<TetrisGameEvent>.TriggerEvent(TetrisGameEvent.ClearRow);
         for (int y = row; y < TetrisHeight - 1; y++)
             for (int x = 0; x < TetrisWidth; x++)
             {

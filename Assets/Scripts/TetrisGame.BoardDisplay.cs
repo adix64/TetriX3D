@@ -48,8 +48,8 @@ public partial class TetrisGame : MonoBehaviour
     private void AnimateBoard()
     {
         AnimateStaticPieces();
-        UnAnimatePiece();
         AnimateProjection();
+        UnAnimatePiece();
     }
 
     private void AnimateStaticPieces()
@@ -59,7 +59,7 @@ public partial class TetrisGame : MonoBehaviour
                 if (!tetrisCore.TetrisBoard[x, y])
                 {
                     float yR;
-                    yR = Mathf.Sin(Time.time * 10f + x + y) * 2f;
+                    yR = Mathf.Sin(Time.time * 5f + x + y) * 4f;
                     cellTransforms[x, y].rotation = Quaternion.Euler(0, 180 + yR, 0);
                 }
                 else
@@ -78,8 +78,10 @@ public partial class TetrisGame : MonoBehaviour
                 var _x = x + projPos.x; var _y = y + projPos.y;
                 if (tetrisCore.CurrPiece.shape[x, y] && _y < TetrisHeight)
                 {
-                    float xR = Mathf.Sin(Time.time * 30f + x + y) * 5f;
-                    cellTransforms[_x, _y].rotation = Quaternion.Euler(xR, 180, 0);
+                    cells[_x, _y].material.color = Color.white * 0.5f;
+                    float xR = Mathf.Sin(Time.time * 50f + x + y) * 30f;
+                    float yR = Mathf.Sin(Time.time * 20f + x + y ) * 30f;
+                    cellTransforms[_x, _y].rotation = Quaternion.Euler(xR, 180 + yR, 0);
                 }
             }
     }
@@ -93,7 +95,10 @@ public partial class TetrisGame : MonoBehaviour
             {
                 var _x = x + piecePos.x; var _y = y + piecePos.y;
                 if (tetrisCore.CurrPiece.shape[x, y] && _y < TetrisHeight)
+                {
+                    cells[_x, _y].material.color = tetrisCore.CurrPiece.color;
                     cellTransforms[_x, _y].rotation = Quaternion.Euler(0, 180, 0);
+                }
             }
     }
 }

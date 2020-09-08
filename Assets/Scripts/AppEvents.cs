@@ -2,7 +2,7 @@
 {
     public enum TetrisGameEvent
     {
-        StepGameLoop, BakePiece, ClearRow, GameOver, NextPiece
+        StepGameLoop, BakePiece, ClearRow, GameOver, NextPiece, SetGamePace
     }
     public enum TetrisControlEvent
     {

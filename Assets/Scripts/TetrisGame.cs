@@ -21,7 +21,6 @@ public partial class TetrisGame : MonoBehaviour
         InitializeBoard();
         BoardDisplayStepUpdate();
     }
-    
     public void MovePiece(Vector2Int offset)
     {
         tetrisCore.MovePiece(offset);
@@ -60,8 +59,13 @@ public partial class TetrisGame : MonoBehaviour
     {
         EventSystem<TetrisControlEvent>.Subscribe(TetrisControlEvent.Pause, PauseGame);
         EventSystem<TetrisControlEvent>.Subscribe(TetrisControlEvent.Resume, ResumeGame);
+        EventSystem<TetrisControlEvent>.Subscribe(TetrisControlEvent.Restart, RestartGame);
+        EventSystem<TetrisGameEvent, float>.Subscribe(TetrisGameEvent.SetGamePace, SetGamePace);
     }
-
+    private void SetGamePace(float speed)
+    {
+        gameSpeed = 1f;
+    }
     private void PauseGame()
     {
         gamePaused = true;
@@ -69,6 +73,11 @@ public partial class TetrisGame : MonoBehaviour
     private void ResumeGame()
     {
         gamePaused = false;
+    }
+    void RestartGame()
+    {
+        gamePaused = false;
+        gameSpeed = 1f;
     }
     private void InitializeTemplatePiecesFromPrefabs()
     {
